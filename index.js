@@ -10,7 +10,10 @@ const allQuestions = {
 }
 const htmlArray = ["HTML Question 1", "HTML Question 2", "HTML Question 3", "HTML Question 4", "HTML Question 5"];
 // declare counters for each section
+
 let html = 0, css = 0, js = 0, jQuery = 0, react = 0;
+
+let questionAttempts = html + css + js + jQuery + react;
 
 function htmlQuestion(box, boxValue) {
     
@@ -257,7 +260,9 @@ function jqueryQuestion(box, boxValue) {
 // Think about the daily double 
 // Array of all [i] sum
 // rand()
-
+// if randSum = sun of I
+then do this
+else do nothing
 
 
 
