@@ -4,24 +4,63 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
+body{
+    background: rgb(82, 75, 75);
+}
 .wrapper{
     width: 80%;
     max-width: 80%;
     margin: 0 auto;
 }
 .flex{
+    border: 10px solid black;
     display: flex;
     flex-wrap: wrap;
+    margin: 2vh;
 }
 .box{
     text-align: center;
-    color: white;
+    color: orange;
     background: blue;
     border: solid black;
     width: calc(20% - 4px);
-    height: 15vh;
+    height: 14vh;
     margin: 2px;
+    padding: 30px;
+    position: relative;
+    transition: all 0.7s ease;
+}
+.box p{
+    position: absolute;
+    top: 45%;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 /* .box:hover{
     background: white;
 } */
+/* typography */
+p{
+    /* text-transform: uppercase; */
+   
+    margin: 0;
+    padding: 0;
+}
+h1{
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+@media all and (min-width: 1024px) and (max-width: 1280px) { 
+
+    p{
+        font-size: 12px;
+    }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) { }
+
+@media all and (min-width: 480px) and (max-width: 768px) { }
+
+@media all and (max-width: 480px) { }
