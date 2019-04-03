@@ -1,141 +1,199 @@
-let box = document.querySelector('box');
+const box = document.querySelector('box');
 let score = 0;
 
-let allQuestions = {
-    htmlQuestions: ["HTML Question 1", "HTML Question 2", "HTML Question 3", "HTML Question 4", "HTML Question 5"],
+const allQuestions = {
+    htmlQuestions: ["aHTML Question 1", "HTML Question 2", "HTML Question 3", "HTML Question 4", "HTML Question 5"],
+    cssQuestions: ["CSS Question 1", "CSS Question 2", "CSS Question 3", "CSS Question 4", "CSS Question 5"],
+    javaScriptQuestions: ["javaScript question 1", "javaScript question 2", "javaScript question 3", "javaScript question 4", "javaScript question 5"],
+    jQueryQuestions: ["jQuery Question 1", "jQuery Question 2", "jQuery Question 3", "jQuery Question 4", "jQuery Question 5"],
+    reactQuestions: ["React Question 1", "React Question 2", "React Question 3", "React Question 4", "React Question 5"]
 }
-let htmlArray = ["HTML Question 1", "HTML Question 2", "HTML Question 3", "HTML Question 4", "HTML Question 5"];
+const htmlArray = ["HTML Question 1", "HTML Question 2", "HTML Question 3", "HTML Question 4", "HTML Question 5"];
 // declare counters for each section
-let i = 0, css = 0, javaScript = 0, jQuery = 0, react = 0;
+let html = 0, css = 0, js = 0, jQuery = 0, react = 0;
 
 function htmlQuestion(box, boxValue) {
     
-    // const answer = prompt(htmlArray[i])
-    // const answer = prompt('Question 1')
     box.style.background = 'white';
     box.style.color = 'white';
     box.onclick = null;
     
-
-    if(i === 0){
-        const answer = prompt(htmlArray[0])
+    if(html === 0){
+        const answer = prompt(allQuestions.htmlQuestions[0])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is a CSS selector. You just won ${score}, your total funds are $${score}`)
+            alert(`Correct! It is a CSS selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
             alert('Sorry!')
         }
-        i++
+        html++
         document.getElementById("theScore").innerHTML = score;
-    } else if(i === 1){
-        const answer = prompt(htmlArray[1])
+    } else if(html === 1){
+        const answer = prompt(allQuestions.htmlQuestions[1])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won ${score}, your total funds are $${score}`)
+            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
             alert('Sorry!')
         }
-        i++
+        html++
         document.getElementById("theScore").innerHTML = score;
-    } else if(i === 2){
-        const answer = prompt(htmlArray[2])
+    } else if(html === 2){
+        const answer = prompt(allQuestions.htmlQuestions[2])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won ${score}, your total funds are $${score}`)
+            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
             alert('Sorry!')
         }
-        i++
+        html++
         document.getElementById("theScore").innerHTML = score;
-    } else if(i === 3){
-        const answer = prompt(htmlArray[3])
+    } else if(html === 3){
+        const answer = prompt(allQuestions.htmlQuestions[3])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won ${score}, your total funds are $${score}`)
+            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
             alert('Sorry!')
         }
-        i++
+        html++
         document.getElementById("theScore").innerHTML = score;
     } else{
-        const answer = prompt(htmlArray[4])
-        if (answer === 'yes') {
-            alert(`Correct! It is aDIV selector. You just won ${score}, your total funds are $${score}`)
+        const answer = prompt(allQuestions.htmlQuestions[4])
+        if (html === 'yes') {
+            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             score = score + boxValue;
         } else {
             alert('Sorry!')
         }
-        i++
+        html++
         document.getElementById("theScore").innerHTML = score;
     }
 }
 function cssQuestion(box, boxValue) {
-    
-    // const answer = prompt(htmlArray[i])
-    // const answer = prompt('Question 1')
+
     box.style.background = 'white';
     box.style.color = 'white';
     box.onclick = null;
     
 
     if(css === 0){
-        const answer = prompt(htmlArray[0])
+        const answer = prompt(allQuestions.cssQuestions[0])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is a CSS selector. You just won ${score}, your total funds are $${score}`)
+            alert(`Correct! It is a CSS selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
             alert('Sorry!')
         }
-        i++
+        css++
         document.getElementById("theScore").innerHTML = score;
     } else if(css === 1){
         const answer = prompt(htmlArray[1])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won ${score}, your total funds are $${score}`)
+            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
             alert('Sorry!')
         }
-        i++
+        css++
         document.getElementById("theScore").innerHTML = score;
     } else if(css === 2){
         const answer = prompt(htmlArray[2])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won ${score}, your total funds are $${score}`)
+            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
             alert('Sorry!')
         }
-        i++
+        css++
         document.getElementById("theScore").innerHTML = score;
     } else if(css === 3){
         const answer = prompt(htmlArray[3])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won ${score}, your total funds are $${score}`)
+            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
             alert('Sorry!')
         }
-        i++
+        css++
         document.getElementById("theScore").innerHTML = score;
     } else{
         const answer = prompt(htmlArray[4])
         if (answer === 'yes') {
-            alert(`Correct! It is aDIV selector. You just won ${score}, your total funds are $${score}`)
+            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             score = score + boxValue;
         } else {
             alert('Sorry!')
         }
-        i++
+        css++
         document.getElementById("theScore").innerHTML = score;
     }
+}
+function jsQuestion(box, boxValue) {
+    
+    box.style.background = 'white';
+    box.style.color = 'white';
+    box.onclick = null;
+    
+
+    if(js === 0){
+        const answer = prompt(htmlArray[0])
+        if (answer === 'yes') {
+            score = score + boxValue;
+            alert(`Correct! It is a CSS selector. You just won $${boxValue}, your total funds are $${score}`)
+        } else {
+            alert('Sorry!')
+        }
+        js++
+        document.getElementById("theScore").innerHTML = score;
+    } else if(css === 1){
+        const answer = prompt(htmlArray[1])
+        if (answer === 'yes') {
+            score = score + boxValue;
+            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
+        } else {
+            alert('Sorry!')
+        }
+        js++
+        document.getElementById("theScore").innerHTML = score;
+    } else if(css === 2){
+        const answer = prompt(htmlArray[2])
+        if (answer === 'yes') {
+            score = score + boxValue;
+            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
+        } else {
+            alert('Sorry!')
+        }
+        js++
+        document.getElementById("theScore").innerHTML = score;
+    } else if(css === 3){
+        const answer = prompt(htmlArray[3])
+        if (answer === 'yes') {
+            score = score + boxValue;
+            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
+        } else {
+            alert('Sorry!')
+        }
+        js++
+        document.getElementById("theScore").innerHTML = score;
+    } else{
+        const answer = prompt(htmlArray[4])
+        if (answer === 'yes') {
+            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
+            score = score + boxValue;
+        } else {
+            alert('Sorry!')
+        }
+        js++
+        document.getElementById("theScore").innerHTML = score;
+    }
+    
 }
 
 
 
-    // CSS 
-
-
+// Todos
+// direct each question at object, then array
 
 
 
