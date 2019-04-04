@@ -6,17 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Jeopardy</title>
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
+    <audio id="dailyDouble" src="jeopardy.mp3"></audio>
+    <audio id="correct" src="right.mp3"></audio>
+    <audio id="wrong" src="wrong.mp3"></audio>
     <main>
         <div class="wrapper">
             <h1>Personal Jeopardy Sum $<span id="theScore"> 0</span></h1>
             <div class="flex">
-                <div class="box"><h3>HTML</h3></div>
-                <div class="box"><h3>CSS</h3></div>
-                <div class="box"><h3>JavaScript</h3></div>
-                <div class="box"><h3>JQuery</h3></div>
-                <div class="box"><h3>React</h3></div>
+                <div class="box"><p>HTML</p></div>
+                <div class="box"><p>CSS</p></div>
+                <div class="box"><p>JavaScript</p></div>
+                <div class="box"><p>JQuery</p></div>
+                <div class="box"><p>React</p></div>
                 <div class="box" onclick="htmlQuestion(this, 100)"><p>$100</p></div>
                 <div class="box" onclick="cssQuestion(this, 100)"><p>$100</p></div>
                 <div class="box" onclick="jsQuestion(this, 100)"><p>$100</p></div>
@@ -42,6 +46,7 @@
                 <div class="box" onclick="jsQuestion(this, 500)"><p>$500</p></div>
                 <div class="box"><p>$500</p></div>
                 <div class="box"><p>$500</p></div>
+                <div class="hidden"><h1>Insert Question Here?</h1></div>
             </div>
         </div>
     </main>
