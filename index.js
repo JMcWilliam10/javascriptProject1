@@ -4,7 +4,7 @@ let score = 0;
 let html = 0,
 css = 0,
 js = 0,
-jQuery = 0,
+jquery = 0,
 react = 0;
 
 //  AUDIO
@@ -14,11 +14,28 @@ function playAudio(placeholder) {
 }
 
 let questionAttempts = 0;
-let randomNumber = Math.round(Math.random() * (5 - 1) + 1);
+let randomNumber = Math.round(Math.random() * (15 - 1) + 1);
 // console.log(`Random number =${randomNumber}`)
 console.log(questionAttempts)
-if (randomNumber === questionAttempts) {
+
+const checkDailyDouble = function(){
+    if(randomNumber === questionAttempts) {
+        playAudio(dailyDouble);
+        document.querySelector('body').style.background = 'blue';
+        dailyDoubleAnswer = prompt(`DAILY DOUBLE! What is the best college of technology?`);
+        if(dailyDoubleAnswer === 'hackeryou'){
+           score += 5000
+           document.getElementById("theScore").innerHTML = score;
+           playAudio(eye);
+        }
+    }
 }
+
+// const endGame = function(){
+//     if(questionAttempts === 3){
+//         location.reload();
+//     }
+// }
 
 const allQuestions = {
     htmlQuestions: ["aHTML Question 1", "HTML Question 2", "HTML Question 3", "HTML Question 4", "HTML Question 5"],
@@ -33,25 +50,15 @@ const wrongAnswer = function(){
 }
 function htmlQuestion(box, boxValue) {
     
-    // toggle class
-    // position: absolute;
-    // top: 0;
-    // width: 100%;
-    // height: 100%;
-    // background: red;
-    // display: none;
     box.style.background = 'white';
     box.style.color = 'white';
-
-    // box.style.position = 'absolute'
     box.onclick = null;
-
 
     if (html === 0) {
         const answer = prompt(allQuestions.htmlQuestions[0])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is a CSS selector. You just won $${boxValue}, your total funds are $${score}`);
+            alert(`Correct! You just won $${boxValue}, your total funds are $${score}`);
             playAudio(correct);
         } else {
            wrongAnswer();
@@ -62,10 +69,10 @@ function htmlQuestion(box, boxValue) {
         const answer = prompt(allQuestions.htmlQuestions[1])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
+            alert(`Correct! You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
         html++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
@@ -76,7 +83,7 @@ function htmlQuestion(box, boxValue) {
             alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
         html++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
@@ -87,7 +94,7 @@ function htmlQuestion(box, boxValue) {
             alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
         html++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
@@ -98,11 +105,13 @@ function htmlQuestion(box, boxValue) {
             score = score + boxValue;
             playAudio(correct);
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
         html++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
     }
+    checkDailyDouble();
+    endGame();
 }
 
 function cssQuestion(box, boxValue) {
@@ -117,7 +126,7 @@ function cssQuestion(box, boxValue) {
             score = score + boxValue;
             alert(`Correct! It is a CSS selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
         css++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
@@ -127,7 +136,7 @@ function cssQuestion(box, boxValue) {
             score = score + boxValue;
             alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
         css++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
@@ -137,7 +146,7 @@ function cssQuestion(box, boxValue) {
             score = score + boxValue;
             alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
         css++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
@@ -147,7 +156,7 @@ function cssQuestion(box, boxValue) {
             score = score + boxValue;
             alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
         css++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
@@ -157,11 +166,12 @@ function cssQuestion(box, boxValue) {
             alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             score = score + boxValue;
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
         css++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
     }
+    checkDailyDouble();
 }
 
 function jsQuestion(box, boxValue) {
@@ -177,7 +187,7 @@ function jsQuestion(box, boxValue) {
             score = score + boxValue;
             alert(`Correct! It is a CSS selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
         js++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
@@ -187,7 +197,7 @@ function jsQuestion(box, boxValue) {
             score = score + boxValue;
             alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
         js++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
@@ -197,7 +207,7 @@ function jsQuestion(box, boxValue) {
             score = score + boxValue;
             alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
         js++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
@@ -207,7 +217,7 @@ function jsQuestion(box, boxValue) {
             score = score + boxValue;
             alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
         js++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
@@ -217,12 +227,12 @@ function jsQuestion(box, boxValue) {
             alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             score = score + boxValue;
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
         js++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
     }
-
+    checkDailyDouble();
 }
 
 function jqueryQuestion(box, boxValue) {
@@ -232,15 +242,15 @@ function jqueryQuestion(box, boxValue) {
     box.onclick = null;
 
 
-    if (js === 0) {
+    if (jquery === 0) {
         const answer = prompt(allQuestions.javaScriptQuestions[0])
         if (answer === 'yes') {
             score = score + boxValue;
             alert(`Correct! It is a CSS selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
-        js++, questionAttempts++;
+        jquery++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
     } else if (css === 1) {
         const answer = prompt(allQuestions.javaScriptQuestions[1])
@@ -248,9 +258,9 @@ function jqueryQuestion(box, boxValue) {
             score = score + boxValue;
             alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
-        js++, questionAttempts++;
+        jquery++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
     } else if (css === 2) {
         const answer = prompt(allQuestions.javaScriptQuestions[2])
@@ -258,9 +268,9 @@ function jqueryQuestion(box, boxValue) {
             score = score + boxValue;
             alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
-        js++, questionAttempts++;
+        jquery++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
     } else if (css === 3) {
         const answer = prompt(allQuestions.javaScriptQuestions[3])
@@ -268,9 +278,9 @@ function jqueryQuestion(box, boxValue) {
             score = score + boxValue;
             alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
-        js++, questionAttempts++;
+        jquery++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
     } else {
         const answer = prompt(allQuestions.javaScriptQuestions[4])
@@ -278,12 +288,72 @@ function jqueryQuestion(box, boxValue) {
             alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             score = score + boxValue;
         } else {
-            alert('Sorry!')
+            wrongAnswer();
         }
-        js++, questionAttempts++;
+        jquery++, questionAttempts++;
         document.getElementById("theScore").innerHTML = score;
     }
+    checkDailyDouble();
+}
+function reactQuestion(box, boxValue) {
 
+    box.style.background = 'white';
+    box.style.color = 'white';
+    box.onclick = null;
+
+
+    if (react === 0) {
+        const answer = prompt(allQuestions.javaScriptQuestions[0])
+        if (answer === 'yes') {
+            score = score + boxValue;
+            alert(`Correct! It is a CSS selector. You just won $${boxValue}, your total funds are $${score}`)
+        } else {
+            wrongAnswer();
+        }
+        react++, questionAttempts++;
+        document.getElementById("theScore").innerHTML = score;
+    } else if (css === 1) {
+        const answer = prompt(allQuestions.javaScriptQuestions[1])
+        if (answer === 'yes') {
+            score = score + boxValue;
+            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
+        } else {
+            wrongAnswer();
+        }
+        react++, questionAttempts++;
+        document.getElementById("theScore").innerHTML = score;
+    } else if (css === 2) {
+        const answer = prompt(allQuestions.javaScriptQuestions[2])
+        if (answer === 'yes') {
+            score = score + boxValue;
+            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
+        } else {
+            wrongAnswer();
+        }
+        react++, questionAttempts++;
+        document.getElementById("theScore").innerHTML = score;
+    } else if (css === 3) {
+        const answer = prompt(allQuestions.javaScriptQuestions[3])
+        if (answer === 'yes') {
+            score = score + boxValue;
+            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
+        } else {
+            wrongAnswer();
+        }
+        react++, questionAttempts++;
+        document.getElementById("theScore").innerHTML = score;
+    } else {
+        const answer = prompt(allQuestions.javaScriptQuestions[4])
+        if (answer === 'yes') {
+            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
+            score = score + boxValue;
+        } else {
+            wrongAnswer();
+        }
+        react++, questionAttempts++;
+        document.getElementById("theScore").innerHTML = score;
+    }
+    checkDailyDouble();
 }
 
 
