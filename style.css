@@ -279,7 +279,7 @@ h1{
     transform: rotate(-8deg);
     border: 10px solid black;
     padding: 10px 50px;
-    background: linear-gradient(180deg, rgba(242,100,25,1) 63%, rgba(0,0,0,1) 100%);
+    background: #F26419;
     border-radius: 20px;
     text-align: center;
     font-size: 30px;
@@ -403,7 +403,21 @@ h1 {
 }
 
 @media all and (max-width: 620px) {
+    .box {
+        text-align: center;
+        color: #F26419;
+        background: #33658A;
+        border: solid black;
+        /* width: calc(20% - 4px); */
+        max-width: calc(15% - 40px);
+        height: 14vh;
+        margin: 2px;
+        padding: 30px;
+        position: relative;
+        transition: all 0.7s ease;
+        height: 12vh;
 
+    }
     .box p {
         font-size: 10px;
     }

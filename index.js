@@ -18,8 +18,7 @@ function playAudio(placeholder) {
 
 let questionAttempts = 0;
 let randomNumber = Math.floor(Math.random() * 25 + 1);
-// console.log(`Random number =${randomNumber}`)
-console.log(questionAttempts)
+console.log("question attempts: ", questionAttempts, "random number: ", questionAttempts);
 
 const checkDailyDouble = function(){
     if(randomNumber === questionAttempts) {
@@ -34,17 +33,10 @@ const checkDailyDouble = function(){
         }
     }
 }
-
-// const endGame = function(){
-//     if(questionAttempts === 3){
-//         location.reload();
-//     }
-// }
-
 const allQuestions = {
     htmlQuestions: ["aHTML Question 1", "HTML Question 2", "HTML Question 3", "HTML Question 4", "HTML Question 5"],
     cssQuestions: ["CSS Question 1", "CSS Question 2", "CSS Question 3", "CSS Question 4", "CSS Question 5"],
-    javaScriptQuestions: ["javaScript question 1", "javaScript question 2", "javaScript question 3", "javaScript question 4", "javaScript question 5"],
+    javaScriptQuestions: ["How many days did it take to write the initial JavaScript Prototype?", "javaScript question 2", "javaScript question 3", "javaScript question 4", "javaScript question 5"],
     jQueryQuestions: ["jQuery Question 1", "jQuery Question 2", "jQuery Question 3", "jQuery Question 4", "jQuery Question 5"],
     reactQuestions: ["React Question 1", "React Question 2", "React Question 3", "React Question 4", "React Question 5"]
 }
@@ -83,7 +75,6 @@ function htmlQuestion(box, boxValue) {
         const answer = prompt(allQuestions.htmlQuestions[0])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! You just won $${boxValue}, your total funds are $${score}`);
             playAudio(correct);
         } else {
            wrongAnswer();
@@ -211,7 +202,7 @@ function jsQuestion(box, boxValue) {
 
     if (js === 0) {
         const answer = prompt(allQuestions.javaScriptQuestions[0])
-        if (answer === 'yes') {
+        if (answer === '10') {
             score = score + boxValue;
             alert(`Correct! It is a CSS selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
