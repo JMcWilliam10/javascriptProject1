@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Jeopardy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    
+
 </head>
+
 <body>
     <audio id="dailyDouble" src="jeopardy.mp3"></audio>
     <audio id="correct" src="right.mp3"></audio>
@@ -15,46 +19,112 @@
     <audio id="eye" src="eye.mp3"></audio>
     <main>
         <div class="wrapper">
-            <h1>Personal Jeopardy Sum $<span id="theScore"> 0</span></h1>
-            <div class="flex">
-                <div class="box"><p>HTML</p></div>
-                <div class="box"><p>CSS</p></div>
-                <div class="box"><p>JavaScript</p></div>
-                <div class="box"><p>JQuery</p></div>
-                <div class="box"><p>React</p></div>
-                <div class="box" onclick="htmlQuestion(this, 100)"><p>$100</p></div>
-                <div class="box" onclick="cssQuestion(this, 100)"><p>$100</p></div>
-                <div class="box" onclick="jsQuestion(this, 100)"><p>$100</p></div>
-                <div class="box" onclick="jqueryQuestion(this, 100)"><p>$100</p></div>
-                <div class="box" onclick="reactQuestion(this, 100)"><p>$100</p></div>
-                <div class="box" onclick="htmlQuestion(this, 200)"><p>$200</p></div>
-                <div class="box" onclick="cssQuestion(this, 200)"><p>$200</p></div>
-                <div class="box" onclick="jsQuestion(this, 200)"><p>$200</p></div>
-                <div class="box" onclick="jqueryQuestion(this, 200)"><p>$200</p></div>
-                <div class="box" onclick="reactQuestion(this, 200)"><p>$200</p></div>
-                <div class="box" onclick="htmlQuestion(this, 300)"><p>$300</p></div>
-                <div class="box" onclick="cssQuestion(this, 300)"><p>$300</p></div>
-                <div class="box" onclick="jsQuestion(this, 300)"><p>$300</p></div>
-                <div class="box" onclick="jqueryQuestion(this, 300)"><p>$300</p></div>
-                <div class="box" onclick="reactQuestion(this, 300)"><p>$300</p></div>
-                <div class="box" onclick="htmlQuestion(this, 400)"><p>$400</p></div>
-                <div class="box" onclick="cssQuestion(this, 400)"><p>$400</p></div>
-                <div class="box" onclick="jsQuestion(this, 400)"><p>$400</p></div>
-                <div class="box" onclick="jqueryQuestion(this, 400)"><p>$400</p></div>
-                <div class="box" onclick="reactQuestion(this, 400)"><p>$400</p></div>
-                <div class="box" onclick="htmlQuestion(this, 500)"><p>$500</p></div>
-                <div class="box" onclick="cssQuestion(this, 500)"><p>$500</p></div>
-                <div class="box" onclick="jsQuestion(this, 500)"><p>$500</p></div>
-                <div class="box" onclick="jqueryQuestion(this, 500)"><p>$500</p></div>
-                <div class="box" onclick="reactQuestion(this, 500)"><p>$500</p></div>
-                <div class="hidden"><h1>Insert Question Here?</h1></div>
+            <h1 class="fadeInDown animated">Developer Jeopardy </h1>
+            <div class="bigFlex">
+                <div class="score">
+                    <h1 class='rotate animated'>$$$$ <span class="" id="theScore"> 0</span></h1>
+                </div>
+                <div class="flex animated swing">
+                    <div class="box">
+                        <p>HTML</p>
+                    </div>
+                    <div class="box">
+                        <p>CSS</p>
+                    </div>
+                    <div class="box">
+                        <p>JavaScript</p>
+                    </div>
+                    <div class="box">
+                        <p>JQuery</p>
+                    </div>
+                    <div class="box">
+                        <p>React</p>
+                    </div>
+                    <div class="box" onclick="htmlQuestion(this, 100)">
+                        <p>$ 100</p>
+                    </div>
+                    <div class="box" onclick="cssQuestion(this, 100)">
+                        <p>$100</p>
+                    </div>
+                    <div class="box" onclick="jsQuestion(this, 100)">
+                        <p>$100</p>
+                    </div>
+                    <div class="box" onclick="jqueryQuestion(this, 100)">
+                        <p>$100</p>
+                    </div>
+                    <div class="box" onclick="reactQuestion(this, 100)">
+                        <p>$100</p>
+                    </div>
+                    <div class="box" onclick="htmlQuestion(this, 200)">
+                        <p>$200</p>
+                    </div>
+                    <div class="box" onclick="cssQuestion(this, 200)">
+                        <p>$200</p>
+                    </div>
+                    <div class="box" onclick="jsQuestion(this, 200)">
+                        <p>$200</p>
+                    </div>
+                    <div class="box" onclick="jqueryQuestion(this, 200)">
+                        <p>$200</p>
+                    </div>
+                    <div class="box" onclick="reactQuestion(this, 200)">
+                        <p>$200</p>
+                    </div>
+                    <div class="box" onclick="htmlQuestion(this, 300)">
+                        <p>$300</p>
+                    </div>
+                    <div class="box" onclick="cssQuestion(this, 300)">
+                        <p>$300</p>
+                    </div>
+                    <div class="box" onclick="jsQuestion(this, 300)">
+                        <p>$300</p>
+                    </div>
+                    <div class="box" onclick="jqueryQuestion(this, 300)">
+                        <p>$300</p>
+                    </div>
+                    <div class="box" onclick="reactQuestion(this, 300)">
+                        <p>$300</p>
+                    </div>
+                    <div class="box" onclick="htmlQuestion(this, 400)">
+                        <p>$400</p>
+                    </div>
+                    <div class="box" onclick="cssQuestion(this, 400)">
+                        <p>$400</p>
+                    </div>
+                    <div class="box" onclick="jsQuestion(this, 400)">
+                        <p>$400</p>
+                    </div>
+                    <div class="box" onclick="jqueryQuestion(this, 400)">
+                        <p>$400</p>
+                    </div>
+                    <div class="box" onclick="reactQuestion(this, 400)">
+                        <p>$400</p>
+                    </div>
+                    <div class="box" onclick="htmlQuestion(this, 500)">
+                        <p>$500</p>
+                    </div>
+                    <div class="box" onclick="cssQuestion(this, 500)">
+                        <p>$500</p>
+                    </div>
+                    <div class="box" onclick="jsQuestion(this, 500)">
+                        <p>$500</p>
+                    </div>
+                    <div class="box" onclick="jqueryQuestion(this, 500)">
+                        <p>$500</p>
+                    </div>
+                    <div class="box" onclick="reactQuestion(this, 500)">
+                        <p>$500</p>
+                    </div>
+                    <div class="hidden">
+                        <h1>Insert Question Here?</h1>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
-        <script
-        src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous"></script>
-        <script src="index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
 </body>
+
 </html>
