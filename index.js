@@ -17,13 +17,13 @@ function playAudio(placeholder) {
 }
 
 let questionAttempts = 0;
-let randomNumber = Math.round(Math.random() * (5 - 1) + 1);
+let randomNumber = Math.floor(Math.random() * 25 + 1);
 // console.log(`Random number =${randomNumber}`)
 console.log(questionAttempts)
 
 const checkDailyDouble = function(){
     if(randomNumber === questionAttempts) {
-        document.querySelector('body').style.background = 'white';
+        // document.querySelector('body').style.background = 'white';
         playAudio(dailyDouble);
         
         dailyDoubleAnswer = prompt(`DAILY DOUBLE! What is the best college of technology?`);
@@ -56,12 +56,28 @@ function questionComplete(){
     box.style.color = 'white';
 
 }
+function masterFunction(){
+    animate();
+    increment();
+    updateScore();
+}
 
+function animate(){
+    document.querySelector('.rotate').classList.add('flip');
+}
+function increment(){
+    html++, questionAttempts++;
+}
+function updateScore(){
+    document.querySelector("#theScore").innerHTML = score;
+    document.querySelector("#theScore2").innerHTML = score;
+}
+// function 
 function htmlQuestion(box, boxValue) {
     
-    // box.style.background = 'white';
-    // box.style.color = 'white';
-    // box.onclick = null;
+    box.style.background = 'white';
+    box.style.color = 'white';
+    box.onclick = null;
 
     if (html === 0) {
         const answer = prompt(allQuestions.htmlQuestions[0])
@@ -72,8 +88,7 @@ function htmlQuestion(box, boxValue) {
         } else {
            wrongAnswer();
         }
-        html++, questionAttempts++;
-        document.querySelector('.rotate').classList.add('flip');
+        masterFunction();
     } else if (html === 1) {
         const answer = prompt(allQuestions.htmlQuestions[1])
         if (answer === 'yes') {
@@ -83,7 +98,7 @@ function htmlQuestion(box, boxValue) {
         } else {
             wrongAnswer();
         }
-        html++, questionAttempts++;
+        increment();
         document.getElementById("theScore").innerHTML = score;
     } else if (html === 2) {
         const answer = prompt(allQuestions.htmlQuestions[2])
