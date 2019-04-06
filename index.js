@@ -35,20 +35,22 @@ const checkDailyDouble = function () {
 }
 const allQuestions = {
     htmlQuestions: ["What is the first name of the physicist who initially proposed HTML?", "HTML Question 2", "HTML Question 3", "HTML Question 4", "HTML Question 5"],
-    cssQuestions: ["Is '::spelling-error' a valid CSS pseudo-element? yes or no", "CSS Question 2", "CSS Question 3", "CSS Question 4", "CSS Question 5"],
+    cssQuestions: ["Is '::spelling-error' a valid CSS pseudo-element? yes or no", "Does CSS stand for Cascadable Style Shelves? yes or no", "Where in an HTML document should an external stylesheet be placed? head or body?", "Is this valid CSS Syntax? {body:color=black}", "Is the following how to declare a comment in CSS?: /* transform: rotate(270deg); */"],
     javaScriptQuestions: ["How many days did it take to write the initial JavaScript Prototype?", "javaScript question 2", "javaScript question 3", "javaScript question 4", "javaScript question 5"],
     jQueryQuestions: ["jQuery Question 1", "jQuery Question 2", "jQuery Question 3", "jQuery Question 4", "jQuery Question 5"],
     reactQuestions: ["React Question 1", "React Question 2", "React Question 3", "React Question 4", "React Question 5"]
 }
 const allAnswers = {
     htmlAnswers: ['tim', 'second', 'third', 'fourth', 'fifth'],
-    cssAnswers: ['yes', 'second', 'third', 'fourth', 'fifth'],
-    javaScriptAnswers: ['10, 'second', 'third', 'fourth', 'fifth'],
+    cssAnswers: ['yes' || 'true', 'no', 'head', 'no', 'yes'],
+    javaScriptAnswers: ['10', 'second', 'third', 'fourth', 'fifth'],
     jQueryAnswers: ['first', 'second', 'third', 'fourth', 'fifth'],
     reactAnswers: ['first', 'second', 'third', 'fourth', 'fifth']
 }
+const cash = {
+    html: [100,200,300,400,500]
 
-let h = 0, c = 0, js = 0, jq = 0, r = 0;
+}
 
 const wrongAnswer = function () {
     playAudio(wrong);
@@ -61,7 +63,6 @@ function questionComplete() {
 
 function masterFunction() {
     animate();
-    increment();
     updateScore();
 }
 
@@ -69,33 +70,37 @@ function animate() {
     document.querySelector('.rotate').classList.add('flip');
 }
 
-function increment() {
-    html++, questionAttempts++;
-}
-
 function updateScore() {
     document.querySelector("#theScore").innerHTML = score;
     document.querySelector("#theScore2").innerHTML = score;
 }
 
+// Initial alert to prompt user to use volume
+alert('please turn on your volume')
+
 // PSEUDOCODE FOR MAIN FUNCTION
 // 1. See if I can abstract out the 'score = score +boxvalue' & playaudio into one function
 // 2. If the user answer is wrong alert with what the answer is 
-// pick a random question
 // abstract out function into classes
 // Change alert boxes to become centered modal
 // Consider inplementing a to lowercase method
 // Make sure that answers correlate with functions 
+// If questionAttempts is at the end alert(thanks for playing) and show highscore
+// Highscores Drogon the Dragon HTML of 
+// 
+
+
 
 // function myFunction() {
 //     var str = "Hello World!";
 //     var res = str.toLowerCase();
-//     document.getElementById("demo").innerHTML = res;
 //   }
 
 // const lowercased = answer.toLowerCase();
-// 
-
+// if (lowercased === 'yes' || 'true')
+// Can an object hold a boolean
+// if(lowercased ===  allAnswers.htmlAnswers[html])
+// let answering = allAnswers.htmlAnswers[html]
 
 
 function htmlQuestion(box, boxValue) {
@@ -105,15 +110,19 @@ function htmlQuestion(box, boxValue) {
     box.onclick = null;
 
     if (html === 0) {
-        const answer = prompt(allQuestions.htmlQuestions[0])
+        const answer = prompt(allQuestions.htmlQuestions[html])
     // Put lower case here
-        if (answer === 'yes') {
+    const lowercased = answer.toLowerCase();
+        if (lowercased === 'tim') {
             score = score + boxValue;
             playAudio(correct);
         } else {
             wrongAnswer();
+            alert(`Sorry! The answer is: ${allAnswers.htmlAnswers[html]}`)
         }
+        // Master function has now included the ingrementor
         masterFunction();
+        html++, questionAttempts++;
     } else if (html === 1) {
         const answer = prompt(allQuestions.htmlQuestions[1])
         if (answer === 'yes') {
@@ -124,6 +133,7 @@ function htmlQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        html++, questionAttempts++;
     } else if (html === 2) {
         const answer = prompt(allQuestions.htmlQuestions[2])
         if (answer === 'yes') {
@@ -134,6 +144,7 @@ function htmlQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        html++, questionAttempts++;
     } else if (html === 3) {
         const answer = prompt(allQuestions.htmlQuestions[3])
         if (answer === 'yes') {
@@ -144,6 +155,7 @@ function htmlQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        html++, questionAttempts++;
     } else {
         const answer = prompt(allQuestions.htmlQuestions[4])
         if (answer === 'yes') {
@@ -154,6 +166,7 @@ function htmlQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        html++, questionAttempts++;
     }
     checkDailyDouble();
 }
@@ -174,9 +187,10 @@ function cssQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        css++, questionAttempts++;
     } else if (css === 1) {
         const answer = prompt(allQuestions.cssQuestions[1])
-        if (answer === 'yes') {
+        if (answer === 'yes' || 'or') {
             score = score + boxValue;
             alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
@@ -184,9 +198,10 @@ function cssQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        css++, questionAttempts++;
     } else if (css === 2) {
         const answer = prompt(allQuestions.cssQuestions[2])
-        if (answer === 'yes') {
+        if (answer === 'head') {
             score = score + boxValue;
             alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
@@ -194,6 +209,7 @@ function cssQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        css++, questionAttempts++;
     } else if (css === 3) {
         const answer = prompt(allQuestions.cssQuestions[3])
         if (answer === 'yes') {
@@ -204,6 +220,7 @@ function cssQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        css++, questionAttempts++;
     } else {
         const answer = prompt(allQuestions.cssQuestions[4])
         if (answer === 'yes') {
@@ -214,6 +231,7 @@ function cssQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        css++, questionAttempts++;
     }
     checkDailyDouble();
 }
@@ -223,7 +241,6 @@ function jsQuestion(box, boxValue) {
     box.style.background = 'white';
     box.style.color = 'white';
     box.onclick = null;
-
 
     if (js === 0) {
         const answer = prompt(allQuestions.javaScriptQuestions[0])
@@ -235,6 +252,7 @@ function jsQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        js++, questionAttempts++;
     } else if (css === 1) {
         const answer = prompt(allQuestions.javaScriptQuestions[1])
         if (answer === 'yes') {
@@ -245,6 +263,7 @@ function jsQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        js++, questionAttempts++;
     } else if (css === 2) {
         const answer = prompt(allQuestions.javaScriptQuestions[2])
         if (answer === 'yes') {
@@ -255,6 +274,7 @@ function jsQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        js++, questionAttempts++;
     } else if (css === 3) {
         const answer = prompt(allQuestions.javaScriptQuestions[3])
         if (answer === 'yes') {
@@ -265,6 +285,7 @@ function jsQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        js++, questionAttempts++;
     } else {
         const answer = prompt(allQuestions.javaScriptQuestions[4])
         if (answer === 'yes') {
@@ -275,6 +296,7 @@ function jsQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        js++, questionAttempts++;
     }
     checkDailyDouble();
 }
@@ -284,7 +306,6 @@ function jqueryQuestion(box, boxValue) {
     box.style.background = 'white';
     box.style.color = 'white';
     box.onclick = null;
-
 
     if (jquery === 0) {
         const answer = prompt(allQuestions.javaScriptQuestions[0])
@@ -296,6 +317,7 @@ function jqueryQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        jquery++, questionAttempts++;
     } else if (css === 1) {
         const answer = prompt(allQuestions.javaScriptQuestions[1])
         if (answer === 'yes') {
@@ -306,6 +328,7 @@ function jqueryQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        jquery++, questionAttempts++;
     } else if (css === 2) {
         const answer = prompt(allQuestions.javaScriptQuestions[2])
         if (answer === 'yes') {
@@ -316,6 +339,7 @@ function jqueryQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        jquery++, questionAttempts++;
     } else if (css === 3) {
         const answer = prompt(allQuestions.javaScriptQuestions[3])
         if (answer === 'yes') {
@@ -326,6 +350,7 @@ function jqueryQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        jquery++, questionAttempts++;
     } else {
         const answer = prompt(allQuestions.javaScriptQuestions[4])
         if (answer === 'yes') {
@@ -336,6 +361,7 @@ function jqueryQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        jquery++, questionAttempts++;
     }
     checkDailyDouble();
 }
@@ -357,6 +383,7 @@ function reactQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        react++, questionAttempts++;
     } else if (css === 1) {
         const answer = prompt(allQuestions.javaScriptQuestions[1])
         if (answer === 'yes') {
@@ -367,6 +394,7 @@ function reactQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        react++, questionAttempts++;
     } else if (css === 2) {
         const answer = prompt(allQuestions.javaScriptQuestions[2])
         if (answer === 'yes') {
@@ -377,6 +405,7 @@ function reactQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        react++, questionAttempts++;
     } else if (css === 3) {
         const answer = prompt(allQuestions.javaScriptQuestions[3])
         if (answer === 'yes') {
@@ -387,6 +416,7 @@ function reactQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        react++, questionAttempts++;
     } else {
         const answer = prompt(allQuestions.javaScriptQuestions[4])
         if (answer === 'yes') {
@@ -397,6 +427,7 @@ function reactQuestion(box, boxValue) {
             wrongAnswer();
         }
         masterFunction();
+        react++, questionAttempts++;
     }
     checkDailyDouble();
 }
