@@ -7,24 +7,23 @@ let html = 0,
     jquery = 0,
     react = 0;
 
-// function bounce() {
-//     document.querySelector("h1").classList.toggle("bounce", "animated");
-// }
-// bounce();
-
 function playAudio(placeholder) {
     placeholder.play();
 }
 
 let questionAttempts = 0;
-let randomNumber = Math.floor(Math.random() * 25 + 1);
-console.log("question attempts: ", questionAttempts, "random number: ", questionAttempts);
+// let randomNumber = Math.floor(Math.random() * 25 + 1);
+// Pick a random number between 5 and 15 to cue the dailyDouble
+let randomNumber = Math.floor(Math.random() * 6) + 5;
+console.log(randomNumber)
 
 const checkDailyDouble = function () {
     if (randomNumber === questionAttempts) {
-        // document.querySelector('body').style.background = 'white';
+        document.querySelector('body').style.background = '#86BBD8';
         playAudio(dailyDouble);
-
+        // How to grab daily double from set timeout
+        // let dailyDoubleAnswer;
+        // setTimeout(function(){ dailyDoubleAnswer = prompt(`DAILY DOUBLE! What is the best college of technology?`);  }, 300);
         dailyDoubleAnswer = prompt(`DAILY DOUBLE! What is the best college of technology?`);
         if (dailyDoubleAnswer === 'hackeryou') {
             score += 5000
@@ -35,11 +34,13 @@ const checkDailyDouble = function () {
 }
 
 const checkEndOfGame = function(){
-    if(questionAttempts === 5 && score >= 1000){
-        prompt('Welcome to the Leaderboard!')
+    if(questionAttempts === 25 && score >= 1000){
+        const boardName = prompt('Welcome to the Leaderboard! Please enter your name: ')
+        document.getElementById('leaderBoardName').innerHTML = boardName;
+        document.getElementById('leaderBoardScore').innerHTML = `$ ${score}`;
 
-    } else if (score < 1000) {
-        alert('You came for the game, but stayed for the music. Thanks for playing!');
+    } else if (questionAttempts === 25 && score < 5000) {
+        alert('Hopefully you came for the game, but stayed for the music. Thanks for playing!');
     }
 
 }
@@ -49,14 +50,14 @@ const allQuestions = {
     cssQuestions: ["Is '::spelling-error' a valid CSS pseudo-element? yes or no", "Does CSS stand for Cascadable Style Shelves? yes or no", "Where in an HTML document should an external stylesheet be placed? head or body?", "Is this valid CSS Syntax? {body:color=black}", "Is the following how to declare a comment in CSS?: /* transform: rotate(270deg); */"],
     javaScriptQuestions: ["How many days did it take to write the initial JavaScript Prototype?", "Is the following the correct syntax for reffering to an external script called 'app.js'?   <script href=\"app.js\">", "javaScript question 3", "javaScript question 4", "javaScript question 5"],
     jQueryQuestions: ["jQuery Question 1", "jQuery Question 2", "jQuery Question 3", "jQuery Question 4", "jQuery Question 5"],
-    reactQuestions: ["React Question 1", "React Question 2", "React Question 3", "React Question 4", "React Question 5"]
+    reactQuestions: ["The creator(s) of React were working at which company when it was developed?", "JSX Stands for 'JavaScript XML", "Can if-else statements be used inside JSX?", "Can conditional expressions be used in JSX?", "React uses what is known as a V______ DOM"]
 }
 const allAnswers = {
     htmlAnswers: ['tim', 'second', 'third', 'fourth', 'fifth'],
-    cssAnswers: ['yes' || 'true', 'no', 'head', 'no', 'yes'],
-    javaScriptAnswers: ['10', 'no || false', 'third', 'fourth', 'fifth'],
+    cssAnswers: ['yes', 'no', 'head', 'no', 'yes'],
+    javaScriptAnswers: ['10', 'no', 'third', 'fourth', 'fifth'],
     jQueryAnswers: ['first', 'second', 'third', 'fourth', 'fifth'],
-    reactAnswers: ['first', 'second', 'third', 'fourth', 'fifth']
+    reactAnswers: ['facebook', 'yes', 'no', 'yes', 'virtual']
 }
 const cash = {
     html: [100,200,300,400,500]
@@ -68,10 +69,10 @@ const cash = {
 //     playAudio(correct);
 // }
 
-const wrongAnswer = function (typeOfAnswer, tech) {
-    playAudio(wrong);
-    alert(`Sorry! The answer is: ${allAnswers[typeOfAnswer][tech]}`)
-}
+// const wrongAnswer = function (typeOfAnswer, tech) {
+
+//     alert(`Sorry! The answer is: ${allAnswers[typeOfAnswer][tech]}`)
+// }
 
 
 
@@ -166,10 +167,10 @@ function htmlQuestion(box, boxValue) {
     // Put lower case here
     const lowercased = answer.toLowerCase();
         if (lowercased === allAnswers.htmlAnswers[html]) {
-            score = score + boxValue;
+            score += boxValue;
             playAudio(correct);
         } else {
-            wrongAnswer('htmlAnswers',html);
+            alert(`Sorry! The answer was ${allAnswers.htmlAnswers[html]}`)
         }
         
         // Master function has now included the incrementor
@@ -178,11 +179,11 @@ function htmlQuestion(box, boxValue) {
     } else if (html === 1) {
         const answer = prompt(allQuestions.htmlQuestions[html])
         if (answer === 'yes') {
-            score = score + boxValue;
+            score += boxValue;
             // alert(`Correct! You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            wrongAnswer(html);
+            alert(`Sorry! The answer was ${allAnswers.htmlAnswers[html]}`)
         }
         masterFunction();
         html++, questionAttempts++;
@@ -192,7 +193,7 @@ function htmlQuestion(box, boxValue) {
             score = score + boxValue;
             playAudio(correct);
         } else {
-            wrongAnswer(html);
+            alert(`Sorry! The answer was ${allAnswers.htmlAnswers[html]}`)
         }
         masterFunction();
         html++, questionAttempts++;
@@ -202,7 +203,7 @@ function htmlQuestion(box, boxValue) {
             score = score + boxValue;
             playAudio(correct);
         } else {
-            wrongAnswer(html);
+            alert(`Sorry! The answer was ${allAnswers.htmlAnswers[html]}`)
         }
         masterFunction();
         html++, questionAttempts++;
@@ -212,7 +213,7 @@ function htmlQuestion(box, boxValue) {
             score = score + boxValue;
             playAudio(correct);
         } else {
-            wrongAnswer(html);
+            alert(`Sorry! The answer was ${allAnswers.htmlAnswers[html]}`)
         }
         masterFunction();
         html++, questionAttempts++;
@@ -410,11 +411,11 @@ function reactQuestion(box, boxValue) {
 
     if (react === 0) {
         const answer = prompt(allQuestions.reactQuestions[react])
-        if (answer === 'yes') {
+        if (answer === allAnswers.reactAnswers[react]) {
             score = score + boxValue;
             playAudio(correct);
         } else {
-            wrongAnswer();
+            alert(`Sorry! The answer was ${allAnswers.reactAnswers[react]}`)
         }
         masterFunction();
         react++, questionAttempts++;
@@ -424,7 +425,7 @@ function reactQuestion(box, boxValue) {
             score = score + boxValue;
             playAudio(correct);
         } else {
-            wrongAnswer();
+            alert(`Sorry! The answer was ${allAnswers.reactAnswers[react]}`)
         }
         masterFunction();
         react++, questionAttempts++;
@@ -434,7 +435,7 @@ function reactQuestion(box, boxValue) {
             score = score + boxValue;
             playAudio(correct);
         } else {
-            wrongAnswer();
+            alert(`Sorry! The answer was ${allAnswers.reactAnswers[react]}`)
         }
         masterFunction();
         react++, questionAttempts++;
@@ -444,17 +445,17 @@ function reactQuestion(box, boxValue) {
             score = score + boxValue;
             playAudio(correct);
         } else {
-            wrongAnswer();
+            alert(`Sorry! The answer was ${allAnswers.reactAnswers[react]}`)
         }
         masterFunction();
         react++, questionAttempts++;
     } else {
         const answer = prompt(allQuestions.reactQuestions[react])
-        if (answer === 'yes') {
+        if (answer === allAnswers.reactAnswers[react]) {
             score = score + boxValue;
             playAudio(correct);
         } else {
-            wrongAnswer();
+            alert(`Sorry! The answer was ${allAnswers.reactAnswers[react]}`)
         }
         masterFunction();
         react++, questionAttempts++;
