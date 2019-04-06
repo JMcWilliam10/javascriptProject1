@@ -284,12 +284,20 @@ h1{
     text-align: center;
     font-size: 30px;
 }
+form{
+    padding: 30px;
+    text-align: center;
+}
 span{
     padding: 10px;
 }
 .rotate{
    /* transform: rotate(270deg); */
 
+}
+
+.score *{
+    padding-top: 20px;
 }
 
 .box {
@@ -340,6 +348,11 @@ h1 {
     padding: 0;
 }
 
+h3{
+    margin: 0;
+    
+}
+
 .hidden {
     position: absolute;
     top: 0;
@@ -347,6 +360,7 @@ h1 {
     height: 100%;
     background: red;
     display: none;
+
 }
 
 .hidden h1 {

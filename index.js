@@ -7,10 +7,10 @@ let html = 0,
     jquery = 0,
     react = 0;
 
-function bounce() {
-    document.querySelector("h1").classList.toggle("bounce", "animated");
-}
-bounce();
+// function bounce() {
+//     document.querySelector("h1").classList.toggle("bounce", "animated");
+// }
+// bounce();
 
 function playAudio(placeholder) {
     placeholder.play();
@@ -33,17 +33,28 @@ const checkDailyDouble = function () {
         }
     }
 }
+
+const checkEndOfGame = function(){
+    if(questionAttempts === 5 && score >= 1000){
+        prompt('Welcome to the Leaderboard!')
+
+    } else if (score < 1000) {
+        alert('You came for the game, but stayed for the music. Thanks for playing!');
+    }
+
+}
+
 const allQuestions = {
     htmlQuestions: ["What is the first name of the physicist who initially proposed HTML?", "HTML Question 2", "HTML Question 3", "HTML Question 4", "HTML Question 5"],
     cssQuestions: ["Is '::spelling-error' a valid CSS pseudo-element? yes or no", "Does CSS stand for Cascadable Style Shelves? yes or no", "Where in an HTML document should an external stylesheet be placed? head or body?", "Is this valid CSS Syntax? {body:color=black}", "Is the following how to declare a comment in CSS?: /* transform: rotate(270deg); */"],
-    javaScriptQuestions: ["How many days did it take to write the initial JavaScript Prototype?", "javaScript question 2", "javaScript question 3", "javaScript question 4", "javaScript question 5"],
+    javaScriptQuestions: ["How many days did it take to write the initial JavaScript Prototype?", "Is the following the correct syntax for reffering to an external script called 'app.js'?   <script href=\"app.js\">", "javaScript question 3", "javaScript question 4", "javaScript question 5"],
     jQueryQuestions: ["jQuery Question 1", "jQuery Question 2", "jQuery Question 3", "jQuery Question 4", "jQuery Question 5"],
     reactQuestions: ["React Question 1", "React Question 2", "React Question 3", "React Question 4", "React Question 5"]
 }
 const allAnswers = {
     htmlAnswers: ['tim', 'second', 'third', 'fourth', 'fifth'],
     cssAnswers: ['yes' || 'true', 'no', 'head', 'no', 'yes'],
-    javaScriptAnswers: ['10', 'second', 'third', 'fourth', 'fifth'],
+    javaScriptAnswers: ['10', 'no || false', 'third', 'fourth', 'fifth'],
     jQueryAnswers: ['first', 'second', 'third', 'fourth', 'fifth'],
     reactAnswers: ['first', 'second', 'third', 'fourth', 'fifth']
 }
@@ -52,9 +63,17 @@ const cash = {
 
 }
 
-const wrongAnswer = function () {
+// const correctAnswer = function (tech){
+//     score = score + boxValue;
+//     playAudio(correct);
+// }
+
+const wrongAnswer = function (typeOfAnswer, tech) {
     playAudio(wrong);
+    alert(`Sorry! The answer is: ${allAnswers[typeOfAnswer][tech]}`)
 }
+
+
 
 function questionComplete() {
     box.style.background = 'white';
@@ -75,10 +94,12 @@ function updateScore() {
     document.querySelector("#theScore2").innerHTML = score;
 }
 
-// Initial alert to prompt user to use volume
-alert('please turn on your volume')
+
+
 
 // PSEUDOCODE FOR MAIN FUNCTION
+
+// Initial alert to prompt user to use volume
 // 1. See if I can abstract out the 'score = score +boxvalue' & playaudio into one function
 // 2. If the user answer is wrong alert with what the answer is 
 // abstract out function into classes
@@ -86,10 +107,42 @@ alert('please turn on your volume')
 // Consider inplementing a to lowercase method
 // Make sure that answers correlate with functions 
 // If questionAttempts is at the end alert(thanks for playing) and show highscore
+
+
 // Highscores Drogon the Dragon HTML of 
 // 
+// Get a random number from 0 to array.length
+// Ask question
+// answer
+// splice away that array object
+// Array.length
+// 
+// Use JQuery to take box 'this' box then convert to that for nested function
+
+// let $box1 = $('.box');
+// console.log($box1)
+// $box1.on('click', console.log('click'))
 
 
+let $form = $('form')
+
+// $('box').on("click", function(){
+//     document.body.style.background = 'black'
+//     console.log(this)
+// })
+
+// 
+$('box').mouseenter(function(){
+    document.body.style.background = black;
+});
+
+
+// Im going to take a stab at this, i'm not sure if I will be able to describe it.
+
+
+// Show and then fade this
+            // alert(`Correct! You just won $${boxValue}, your total funds are $${score}`)
+            // Using template literals and the jquery dom method
 
 // function myFunction() {
 //     var str = "Hello World!";
@@ -104,7 +157,6 @@ alert('please turn on your volume')
 
 
 function htmlQuestion(box, boxValue) {
-
     box.style.background = 'white';
     box.style.color = 'white';
     box.onclick = null;
@@ -113,62 +165,60 @@ function htmlQuestion(box, boxValue) {
         const answer = prompt(allQuestions.htmlQuestions[html])
     // Put lower case here
     const lowercased = answer.toLowerCase();
-        if (lowercased === 'tim') {
+        if (lowercased === allAnswers.htmlAnswers[html]) {
             score = score + boxValue;
             playAudio(correct);
         } else {
-            wrongAnswer();
-            alert(`Sorry! The answer is: ${allAnswers.htmlAnswers[html]}`)
+            wrongAnswer('htmlAnswers',html);
         }
-        // Master function has now included the ingrementor
+        
+        // Master function has now included the incrementor
         masterFunction();
         html++, questionAttempts++;
     } else if (html === 1) {
-        const answer = prompt(allQuestions.htmlQuestions[1])
+        const answer = prompt(allQuestions.htmlQuestions[html])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! You just won $${boxValue}, your total funds are $${score}`)
+            // alert(`Correct! You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(html);
         }
         masterFunction();
         html++, questionAttempts++;
     } else if (html === 2) {
-        const answer = prompt(allQuestions.htmlQuestions[2])
+        const answer = prompt(allQuestions.htmlQuestions[html])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(html);
         }
         masterFunction();
         html++, questionAttempts++;
     } else if (html === 3) {
-        const answer = prompt(allQuestions.htmlQuestions[3])
+        const answer = prompt(allQuestions.htmlQuestions[html])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(html);
         }
         masterFunction();
         html++, questionAttempts++;
     } else {
-        const answer = prompt(allQuestions.htmlQuestions[4])
+        const answer = prompt(allQuestions.htmlQuestions[html])
         if (answer === 'yes') {
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             score = score + boxValue;
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(html);
         }
         masterFunction();
         html++, questionAttempts++;
     }
     checkDailyDouble();
+    checkEndOfGame();
 }
 
 function cssQuestion(box, boxValue) {
@@ -178,57 +228,52 @@ function cssQuestion(box, boxValue) {
     box.onclick = null;
 
     if (css === 0) {
-        const answer = prompt(allQuestions.cssQuestions[0])
-        if (answer === 'yes') {
+        const answer = prompt(allQuestions.cssQuestions[css])
+        if (answer === a) {
             score = score + boxValue;
-            alert(`Correct! It is a CSS selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(css);
         }
         masterFunction();
         css++, questionAttempts++;
     } else if (css === 1) {
-        const answer = prompt(allQuestions.cssQuestions[1])
+        const answer = prompt(allQuestions.cssQuestions[css])
         if (answer === 'yes' || 'or') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(css);
         }
         masterFunction();
         css++, questionAttempts++;
     } else if (css === 2) {
-        const answer = prompt(allQuestions.cssQuestions[2])
+        const answer = prompt(allQuestions.cssQuestions[css])
         if (answer === 'head') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(css);
         }
         masterFunction();
         css++, questionAttempts++;
     } else if (css === 3) {
-        const answer = prompt(allQuestions.cssQuestions[3])
+        const answer = prompt(allQuestions.cssQuestions[css])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(css);
         }
         masterFunction();
         css++, questionAttempts++;
     } else {
-        const answer = prompt(allQuestions.cssQuestions[4])
+        const answer = prompt(allQuestions.cssQuestions[css])
         if (answer === 'yes') {
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             score = score + boxValue;
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(css);
         }
         masterFunction();
         css++, questionAttempts++;
@@ -243,57 +288,52 @@ function jsQuestion(box, boxValue) {
     box.onclick = null;
 
     if (js === 0) {
-        const answer = prompt(allQuestions.javaScriptQuestions[0])
+        const answer = prompt(allQuestions.javaScriptQuestions[js])
         if (answer === '10') {
             score = score + boxValue;
-            alert(`Correct! It is a CSS selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(js);
         }
         masterFunction();
         js++, questionAttempts++;
     } else if (css === 1) {
-        const answer = prompt(allQuestions.javaScriptQuestions[1])
+        const answer = prompt(allQuestions.javaScriptQuestions[js])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(js);
         }
         masterFunction();
         js++, questionAttempts++;
     } else if (css === 2) {
-        const answer = prompt(allQuestions.javaScriptQuestions[2])
+        const answer = prompt(allQuestions.javaScriptQuestions[js])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(js);
         }
         masterFunction();
         js++, questionAttempts++;
     } else if (css === 3) {
-        const answer = prompt(allQuestions.javaScriptQuestions[3])
+        const answer = prompt(allQuestions.javaScriptQuestions[js])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(js);
         }
         masterFunction();
         js++, questionAttempts++;
     } else {
-        const answer = prompt(allQuestions.javaScriptQuestions[4])
+        const answer = prompt(allQuestions.javaScriptQuestions[js])
         if (answer === 'yes') {
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
             score = score + boxValue;
         } else {
-            wrongAnswer();
+            wrongAnswer(js);
         }
         masterFunction();
         js++, questionAttempts++;
@@ -308,57 +348,52 @@ function jqueryQuestion(box, boxValue) {
     box.onclick = null;
 
     if (jquery === 0) {
-        const answer = prompt(allQuestions.javaScriptQuestions[0])
+        const answer = prompt(allQuestions.jQueryQuestions[jquery])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is a CSS selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(jquery);
         }
         masterFunction();
         jquery++, questionAttempts++;
     } else if (css === 1) {
-        const answer = prompt(allQuestions.javaScriptQuestions[1])
+        const answer = prompt(allQuestions.jQueryQuestions[jquery])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(jquery);
         }
         masterFunction();
         jquery++, questionAttempts++;
     } else if (css === 2) {
-        const answer = prompt(allQuestions.javaScriptQuestions[2])
+        const answer = prompt(allQuestions.jQueryQuestions[jquery])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(jquery);
         }
         masterFunction();
         jquery++, questionAttempts++;
     } else if (css === 3) {
-        const answer = prompt(allQuestions.javaScriptQuestions[3])
+        const answer = prompt(allQuestions.jQueryQuestions[jquery])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(jquery);
         }
         masterFunction();
         jquery++, questionAttempts++;
     } else {
-        const answer = prompt(allQuestions.javaScriptQuestions[4])
+        const answer = prompt(allQuestions.jQueryQuestions[jquery])
         if (answer === 'yes') {
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             score = score + boxValue;
             playAudio(correct);
         } else {
-            wrongAnswer();
+            wrongAnswer(jquery);
         }
         masterFunction();
         jquery++, questionAttempts++;
@@ -374,10 +409,9 @@ function reactQuestion(box, boxValue) {
 
 
     if (react === 0) {
-        const answer = prompt(allQuestions.javaScriptQuestions[0])
+        const answer = prompt(allQuestions.reactQuestions[react])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is a CSS selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
             wrongAnswer();
@@ -385,10 +419,9 @@ function reactQuestion(box, boxValue) {
         masterFunction();
         react++, questionAttempts++;
     } else if (css === 1) {
-        const answer = prompt(allQuestions.javaScriptQuestions[1])
+        const answer = prompt(allQuestions.reactQuestions[react])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
             wrongAnswer();
@@ -396,10 +429,9 @@ function reactQuestion(box, boxValue) {
         masterFunction();
         react++, questionAttempts++;
     } else if (css === 2) {
-        const answer = prompt(allQuestions.javaScriptQuestions[2])
+        const answer = prompt(allQuestions.reactQuestions[react])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`);
             playAudio(correct);
         } else {
             wrongAnswer();
@@ -407,10 +439,9 @@ function reactQuestion(box, boxValue) {
         masterFunction();
         react++, questionAttempts++;
     } else if (css === 3) {
-        const answer = prompt(allQuestions.javaScriptQuestions[3])
+        const answer = prompt(allQuestions.reactQuestions[react])
         if (answer === 'yes') {
             score = score + boxValue;
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
         } else {
             wrongAnswer();
@@ -418,9 +449,8 @@ function reactQuestion(box, boxValue) {
         masterFunction();
         react++, questionAttempts++;
     } else {
-        const answer = prompt(allQuestions.javaScriptQuestions[4])
+        const answer = prompt(allQuestions.reactQuestions[react])
         if (answer === 'yes') {
-            alert(`Correct! It is aDIV selector. You just won $${boxValue}, your total funds are $${score}`)
             score = score + boxValue;
             playAudio(correct);
         } else {
@@ -431,3 +461,4 @@ function reactQuestion(box, boxValue) {
     }
     checkDailyDouble();
 }
+
