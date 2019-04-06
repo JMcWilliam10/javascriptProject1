@@ -1,5 +1,5 @@
 const box = document.querySelector('box');
-const hidden = document.querySelector('hidden');
+// const hidden = document.querySelector('hidden');
 let score = 0;
 let html = 0,
     css = 0,
@@ -33,16 +33,14 @@ const checkDailyDouble = function () {
     }
 }
 
-const checkEndOfGame = function(){
-    if(questionAttempts === 25 && score >= 1000){
+const checkEndOfGame = function () {
+    if (questionAttempts === 25 && score >= 1000) {
         const boardName = prompt('Welcome to the Leaderboard! Please enter your name: ')
         document.getElementById('leaderBoardName').innerHTML = boardName;
         document.getElementById('leaderBoardScore').innerHTML = `$ ${score}`;
-
     } else if (questionAttempts === 25 && score < 5000) {
         alert('Hopefully you came for the game, but stayed for the music. Thanks for playing!');
     }
-
 }
 
 const allQuestions = {
@@ -59,10 +57,9 @@ const allAnswers = {
     jQueryAnswers: ['first', 'second', 'third', 'fourth', 'fifth'],
     reactAnswers: ['facebook', 'yes', 'no', 'yes', 'virtual']
 }
-const cash = {
-    html: [100,200,300,400,500]
-
-}
+// const cash = {
+//     html: [100,200,300,400,500]
+// }
 
 // const correctAnswer = function (tech){
 //     score = score + boxValue;
@@ -124,31 +121,24 @@ function updateScore() {
 // console.log($box1)
 // $box1.on('click', console.log('click'))
 
-
-let $form = $('form')
+///////// jQuery Notes ///////////
+// let $form = $('form')
 
 // $('box').on("click", function(){
 //     document.body.style.background = 'black'
 //     console.log(this)
 // })
+// $('box').mouseenter(function(){
+//     document.body.style.background = black;
+// });
 
-// 
-$('box').mouseenter(function(){
-    document.body.style.background = black;
-});
-
-
-// Im going to take a stab at this, i'm not sure if I will be able to describe it.
 
 
 // Show and then fade this
-            // alert(`Correct! You just won $${boxValue}, your total funds are $${score}`)
-            // Using template literals and the jquery dom method
+    // alert(`Correct! You just won $${boxValue}, your total funds are $${score}`)
+    // Using template literals and the jquery dom method
 
-// function myFunction() {
-//     var str = "Hello World!";
-//     var res = str.toLowerCase();
-//   }
+
 
 // const lowercased = answer.toLowerCase();
 // if (lowercased === 'yes' || 'true')

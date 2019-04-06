@@ -352,6 +352,9 @@ h3{
     margin: 0;
     
 }
+h5{
+    display: inline;
+}
 
 .hidden {
     position: absolute;
