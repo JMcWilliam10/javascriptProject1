@@ -44,18 +44,21 @@ const checkEndOfGame = function () {
 }
 
 const allQuestions = {
-    htmlQuestions: ["What is the first name of the physicist who initially proposed HTML?", "Does HTML stand for: Hyperlinks Tooling Markup Language? Yes or No?", "Which tag is meant to represent the largest heading in html? \'h1\' or \'h6\'?", "HTML Question 4", "HTML Question 5"],
-    cssQuestions: ["Is '::spelling-error' a valid CSS pseudo-element? yes or no", "Does CSS stand for Cascadable Style Shelves? yes or no", "Where in an HTML document should an external stylesheet be placed? head or body?", "Is this valid CSS Syntax? {body:color=black}", "Is the following how to declare a comment in CSS?: /* transform: rotate(270deg); */"],
+    htmlQuestions: ["What is the first name of the physicist who initially proposed HTML?", "Does HTML stand for: Hyperlinks Tooling Markup Language? Yes or No?", "Does a h6 heading tag display a larger header than a h1 heading tag by default? ", "Are inline elements normally displayed without starting a new line?", "Is the <ul> the tag used to make a numbered list?"],
+    cssQuestions: ["Is '::spelling-error' a valid CSS pseudo-element? yes or no", "Does CSS stand for Cascadable Style Shelves? yes or no", "Where in an HTML document should an external stylesheet be placed? head or body?", "Is this valid CSS Syntax? {body:color=black}", "Is the following how to declare a comment in CSS? /* transform: rotate(270deg); */"],
     javaScriptQuestions: ["How many days did it take to write the initial JavaScript Prototype?", "Is the following the correct syntax for reffering to an external script called 'app.js'?   <script href=\"app.js\">", "javaScript question 3", "javaScript question 4", "javaScript question 5"],
     jQueryQuestions: ["jQuery Question 1", "jQuery Question 2", "jQuery Question 3", "jQuery Question 4", "jQuery Question 5"],
     reactQuestions: ["The creator(s) of React were working at which company when it was developed?", "JSX Stands for 'JavaScript XML", "Can if-else statements be used inside JSX?", "Can conditional expressions be used in JSX?", "React uses what is known as a V______ DOM"]
 }
 
 const allAnswers = {
-    htmlAnswers: ['tim', 'no', 'third', 'fourth', 'fifth'],
+    // HTML COMPLETE
+    htmlAnswers: ['tim', 'no', 'no', 'yes', 'no'],
+    // CSS COMPLETE
     cssAnswers: ['yes', 'no', 'head', 'no', 'yes'],
     javaScriptAnswers: ['10', 'no', 'third', 'fourth', 'fifth'],
     jQueryAnswers: ['first', 'second', 'third', 'fourth', 'fifth'],
+    // REACT COMPLETE 
     reactAnswers: ['facebook', 'yes', 'no', 'yes', 'virtual']
 }
 
@@ -90,13 +93,13 @@ function htmlQuestion(box, boxValue) {
     box.onclick = null;
 
     if (html === 0) {
-        const answer = prompt(allQuestions.htmlQuestions[html])
+        const answer = prompt(allQuestions.htmlQuestions[html]);
         const lowercased = answer.toLowerCase();
         if (lowercased === allAnswers.htmlAnswers[html]) {
             score += boxValue;
             playAudio(correct);
-            document.getElementById("answering").innerHTML = `Correct! The answer is ${allAnswers.htmlAnswers[html]}! You just added $${boxValue} to your funds, your total funds are now $${score}!`;
-            encouragement()
+            document.getElementById("answering").innerHTML = `Correct! The answer is ${allAnswers.htmlAnswers[html]}! You just added $${boxValue} to your funds!`;
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.htmlAnswers[html]}`)
         }
@@ -106,11 +109,12 @@ function htmlQuestion(box, boxValue) {
     } else if (html === 1) {
         const answer = prompt(allQuestions.htmlQuestions[html])
         const lowercased = answer.toLowerCase();
-        if (lowercased === 'true') {
+        if (lowercased === allAnswers.htmlAnswers[html]) {
             score += boxValue;
             // alert(`Correct! You just won $${boxValue}, your total funds are $${score}`)
             playAudio(correct);
             document.getElementById("answering").innerHTML = `Correct! The answer is ${allAnswers.htmlAnswers[html]}! You just added $${boxValue} to your funds, your total funds are now $${score}!`;
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.htmlAnswers[html]}`)
         }
@@ -118,10 +122,11 @@ function htmlQuestion(box, boxValue) {
         html++, questionAttempts++;
     } else if (html === 2) {
         const answer = prompt(allQuestions.htmlQuestions[html])
-        const lowercased = answer.toLowerCase();
+        const lowercased = allAnswers.htmlAnswers[html];
         if (lowercased === 'yes') {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.htmlAnswers[html]}`)
         }
@@ -131,9 +136,10 @@ function htmlQuestion(box, boxValue) {
     } else if (html === 3) {
         const answer = prompt(allQuestions.htmlQuestions[html])
         const lowercased = answer.toLowerCase();
-        if (lowercased === 'yes') {
+        if (lowercased === allAnswers.htmlAnswers[html]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.htmlAnswers[html]}`)
         }
@@ -142,9 +148,10 @@ function htmlQuestion(box, boxValue) {
     } else {
         const answer = prompt(allQuestions.htmlQuestions[html])
         const lowercased = answer.toLowerCase();
-        if (lowercased === 'yes') {
+        if (lowercased === allAnswers.htmlAnswers[html]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.htmlAnswers[html]}`)
         }
@@ -164,9 +171,10 @@ function cssQuestion(box, boxValue) {
     if (css === 0) {
         const answer = prompt(allQuestions.cssQuestions[css])
         const lowercased = answer.toLowerCase();
-        if (lowercased === a) {
+        if (lowercased === allAnswers.cssQuestions[css]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.cssAnswers[css]}`);
         }
@@ -175,9 +183,10 @@ function cssQuestion(box, boxValue) {
     } else if (css === 1) {
         const answer = prompt(allQuestions.cssQuestions[css])
         const lowercased = answer.toLowerCase();
-        if (lowercased === 'yes' || 'or') {
+        if (lowercased === allAnswers.cssQuestions[css]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.cssAnswers[css]}`);
         }
@@ -186,9 +195,10 @@ function cssQuestion(box, boxValue) {
     } else if (css === 2) {
         const answer = prompt(allQuestions.cssQuestions[css])
         const lowercased = answer.toLowerCase();
-        if (lowercased === 'head') {
+        if (lowercased === allAnswers.cssQuestions[css]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.cssAnswers[css]}`);
         }
@@ -197,9 +207,10 @@ function cssQuestion(box, boxValue) {
     } else if (css === 3) {
         const answer = prompt(allQuestions.cssQuestions[css])
         const lowercased = answer.toLowerCase();
-        if (lowercased === 'yes') {
+        if (lowercased === allAnswers.cssQuestions[css]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.cssAnswers[css]}`);
         }
@@ -208,9 +219,10 @@ function cssQuestion(box, boxValue) {
     } else {
         const answer = prompt(allQuestions.cssQuestions[css])
         const lowercased = answer.toLowerCase();
-        if (lowercased === 'yes') {
+        if (lowercased === allAnswers.cssQuestions[css]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.cssAnswers[css]}`);
         }
@@ -229,9 +241,10 @@ function jsQuestion(box, boxValue) {
     if (js === 0) {
         const answer = prompt(allQuestions.javaScriptQuestions[js]);
         const lowercased = answer.toLowerCase();
-        if (lowercased === '10') {
+        if (lowercased === allAnswers.javaScriptAnswers[js]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.javaScriptAnswers[js]}`);
         }
@@ -240,9 +253,10 @@ function jsQuestion(box, boxValue) {
     } else if (css === 1) {
         const answer = prompt(allQuestions.javaScriptQuestions[js]);
         const lowercased = answer.toLowerCase();
-        if (lowercased === 'yes') {
+        if (lowercased === allAnswers.javaScriptAnswers[js]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             wrongAnswer(js);
         }
@@ -251,9 +265,10 @@ function jsQuestion(box, boxValue) {
     } else if (css === 2) {
         const answer = prompt(allQuestions.javaScriptQuestions[js])
         const lowercased = answer.toLowerCase();
-        if (lowercased === 'yes') {
+        if (lowercased === allAnswers.javaScriptAnswers[js]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.javaScriptAnswers[js]}`);
         }
@@ -262,9 +277,10 @@ function jsQuestion(box, boxValue) {
     } else if (css === 3) {
         const answer = prompt(allQuestions.javaScriptQuestions[js])
         const lowercased = answer.toLowerCase();
-        if (lowercased === 'yes') {
+        if (lowercased === allAnswers.javaScriptAnswers[js]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.javaScriptAnswers[js]}`);
         }
@@ -273,9 +289,10 @@ function jsQuestion(box, boxValue) {
     } else {
         const answer = prompt(allQuestions.javaScriptQuestions[js]);
         const lowercased = answer.toLowerCase();
-        if (lowercased === 'yes') {
-            playAudio(correct);
+        if (lowercased === allAnswers.javaScriptAnswers[js]) {
             score = score + boxValue;
+            playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.javaScriptAnswers[js]}`);
         }
@@ -294,9 +311,10 @@ function jqueryQuestion(box, boxValue) {
     if (jquery === 0) {
         const answer = prompt(allQuestions.jQueryQuestions[jquery]);
         const lowercased = answer.toLowerCase();
-        if (lowercased === 'yes') {
+        if (lowercased === allAnswers.jQueryAnswers[jquery]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.jQueryAnswers[jquery]}`);
         }
@@ -305,9 +323,10 @@ function jqueryQuestion(box, boxValue) {
     } else if (css === 1) {
         const answer = prompt(allQuestions.jQueryQuestions[jquery]);
         const lowercased = answer.toLowerCase();
-        if (lowercased === 'yes') {
+        if (lowercased === allAnswers.jQueryAnswers[jquery]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.jQueryAnswers[jquery]}`);
         }
@@ -316,9 +335,10 @@ function jqueryQuestion(box, boxValue) {
     } else if (css === 2) {
         const answer = prompt(allQuestions.jQueryQuestions[jquery]);
         const lowercased = answer.toLowerCase();
-        if (lowercased === 'yes') {
+        if (lowercased === allAnswers.jQueryAnswers[jquery]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.jQueryAnswers[jquery]}`);
         }
@@ -327,9 +347,10 @@ function jqueryQuestion(box, boxValue) {
     } else if (css === 3) {
         const answer = prompt(allQuestions.jQueryQuestions[jquery]);
         const lowercased = answer.toLowerCase();
-        if (lowercased === 'yes') {
+        if (lowercased === allAnswers.jQueryAnswers[jquery]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.jQueryAnswers[jquery]}`);
         }
@@ -338,9 +359,10 @@ function jqueryQuestion(box, boxValue) {
     } else {
         const answer = prompt(allQuestions.jQueryQuestions[jquery]);
         const lowercased = answer.toLowerCase();
-        if (lowercased === 'yes') {
+        if (lowercased === allAnswers.jQueryAnswers[jquery]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.jQueryAnswers[jquery]}`);
         }
@@ -363,6 +385,7 @@ function reactQuestion(box, boxValue) {
         if (lowercased === allAnswers.reactAnswers[react]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.reactAnswers[react]}`)
         }
@@ -374,6 +397,7 @@ function reactQuestion(box, boxValue) {
         if (lowercased === 'yes') {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.reactAnswers[react]}`)
         }
@@ -384,6 +408,7 @@ function reactQuestion(box, boxValue) {
         if (answer === 'yes') {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.reactAnswers[react]}`)
         }
@@ -395,6 +420,7 @@ function reactQuestion(box, boxValue) {
         if (lowercased === 'yes') {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.reactAnswers[react]}`)
         }
@@ -406,6 +432,7 @@ function reactQuestion(box, boxValue) {
         if (lowercased === allAnswers.reactAnswers[react]) {
             score = score + boxValue;
             playAudio(correct);
+            encouragement();
         } else {
             alert(`Sorry! The answer was ${allAnswers.reactAnswers[react]}`)
         }
