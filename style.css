@@ -15,7 +15,7 @@ h1 {
     padding: 0;
 }
 
-h3{
+h2{
     margin: 0;
     
 }
@@ -64,9 +64,11 @@ form{
 span{
     padding: 10px;
 }
-/* h6 span{
-    padding: 10px 0;
-} */
+h6 span{
+    margin: 0;
+    padding:  0 2px;
+    font-size: 20px;
+}
 .score *{
     padding-top: 15px;
 }

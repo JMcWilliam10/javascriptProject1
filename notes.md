@@ -39,9 +39,30 @@
 
 Find quiz questions for 
 
-2 HTML
 3 js
 5 jquery
 
 Change all of the if === object array
 
+<!--  -->
+If chosen score equal modulo of 5%0 log 100 if 5 % 1 log 200
+
+if (questionAttempts === 5% 0){
+    score === 
+}
+
+?TO use?
+
+let scoreChooser = function(){
+//     if (questionAttempts === 5 % 0){
+//         score = score[0];
+//     } else if (questionAttempts === 4 % 0){
+//         score = score[1];
+//     } else if (questionAttempts === 3 % 0){
+//         score = score[2]
+//     } else if (questionAttempts === 2 % 0){
+//         score = score[3]
+//     } else {
+//         score = score[4]
+//     }
+// }
