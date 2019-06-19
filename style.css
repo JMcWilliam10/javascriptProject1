@@ -78,7 +78,7 @@ h6 span{
     background: #33658A;
     border: solid black;
     width: calc(20% - 4px);
-    height: 14vh;
+    height: 12vh;
     margin: 2px;
     padding: 30px;
     position: relative;
@@ -145,7 +145,7 @@ h6 span{
         background: #33658A;
         border: solid black;
         width: calc(20% - 4px);
-        height: 14vh;
+        height: 12vh;
         margin: 2px;
         padding: 30px;
         position: relative;
@@ -173,7 +173,7 @@ h6 span{
         border: solid black;
         /* width: calc(20% - 4px); */
         max-width: calc(15% - 40px);
-        height: 14vh;
+        height: 12vh;
         margin: 2px;
         padding: 30px;
         position: relative;

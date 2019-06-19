@@ -51,18 +51,18 @@ if (questionAttempts === 5% 0){
     score === 
 }
 
-?TO use?
+Potential functionality??
 
 let scoreChooser = function(){
 //     if (questionAttempts === 5 % 0){
-//         score = score[0];
+//         boxValue = 100;
 //     } else if (questionAttempts === 4 % 0){
-//         score = score[1];
+//         boxValue  = score[1];
 //     } else if (questionAttempts === 3 % 0){
-//         score = score[2]
+//        boxValue  = score[2]
 //     } else if (questionAttempts === 2 % 0){
-//         score = score[3]
+//         boxValue  = score[3]
 //     } else {
-//         score = score[4]
+//         boxValue  = score[4]
 //     }
 // }

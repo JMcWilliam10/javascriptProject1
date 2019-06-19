@@ -45,7 +45,7 @@ const checkEndOfGame = function () {
         const boardName = prompt('Welcome to the Leaderboard! Please enter your name: ')
         document.getElementById('topScoreName').innerHTML = boardName;
         document.getElementById('topScore').innerHTML = `$ ${score}`;
-    } else if (questionAttempts === 25 && score > 8000) {
+    } else if (questionAttempts === 25 && score >= 8000) {
         const boardName = prompt('Welcome to the Leaderboard! Please enter your name: ')
         document.getElementById('middleScoreName').innerHTML = boardName;
         document.getElementById('middleScore').innerHTML = `$ ${score}`;
@@ -93,7 +93,6 @@ const allAnswers = {
     jQueryAnswers: ['no', 'no', 'yes', 'yes', 'no'],
     reactAnswers: ['facebook', 'yes', 'no', 'yes', 'virtual']
 }
-// const scoreValue = [100,200,300,400,500];
 
 function questionComplete() {
     box.style.background = 'white';
